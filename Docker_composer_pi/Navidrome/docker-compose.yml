@@ -1,0 +1,17 @@
+services:
+  navidrome:
+    container_name: navidrone
+    image: deluan/navidrome:latest
+    #user: 1000:1000 # should be owner of volumes
+    ports:
+      - "4533:4533"
+    restart: always
+    environment:
+      # Optional: put your config options customization here. Examples:
+      ND_SCANSCHEDULE: 1h
+      ND_LOGLEVEL: info
+    volumes:
+      - "navidrome_data:/data"
+      - "${MusicFolder}:/music:ro"
+volumes:
+  navidrome_data:

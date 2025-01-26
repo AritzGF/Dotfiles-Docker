@@ -1,0 +1,27 @@
+# Más información en https://github.com/pi-hole/docker-pi-hole/ y https://docs.pi-hole.net/
+services:
+  Pi-hole:
+    container_name: Pi-hole
+    image: pihole/pihole:latest
+    # Para DHCP se recomienda eliminar estos puertos y usar: network_mode: "host"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp" # Solo requerido si usas Pi-hole como servidor DHCP
+      - "80:80/tcp"
+    environment:
+      TZ: 'Europe/Madrid'
+      WEBPASSWORD: ${PIHOLE_ADMIN}
+      DNS1: 1.1.1.1
+      DNSMASQ_LISTENING: all
+    # Los volúmenes almacenan los datos entre actualizaciones del contenedor
+    volumes:
+      - pihole:/etc/pihole
+      - dnsmsq:/etc/dnsmasq.d
+    # https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    cap_add:
+      - NET_ADMIN # Solo requerido si usas Pi-hole como servidor DHCP
+    restart: always
+volumes:
+  pihole:
+  dnsmsq:
