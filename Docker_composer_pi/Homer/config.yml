@@ -114,7 +114,7 @@ services:
         url: "https://twitter.com"
       - name: "GitHub"
         icon: "fa-brands fa-github"
-        url: "https://github.com/"
+        url: "https://github.com/AritzGF"
   - name: "Servicos"
     icon: "fas fa-cloud"
     items:
