@@ -124,3 +124,9 @@ services:
       - name: "NoIp"
         icon: "fas fa-globe"
         url: "https://my.noip.com/"
+  - name: "Hacking"
+    icon: "fas fa-bomb"
+    items:
+      - name: "GTFOBins"
+        icon: "fa-solid fa-binary"
+        url: "https://gtfobins.github.io"
